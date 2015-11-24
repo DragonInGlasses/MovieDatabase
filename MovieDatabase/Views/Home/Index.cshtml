@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MovieDatabase.Models.Movies>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>Index</h2>
+<table id="movieTable">
+    <tr>
+        <th></th>
+        <th>
+            Id
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Synopsis
+        </th>
+        <th>
+            DateReleased
+        </th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>
+                <a href="/Home/Edit/@m.Id">Edit</a> |
+            </td>
+            <td>
+                @m.Id
+            </td>
+            <td>
+                @m.Title
+            </td>
+            <td>
+                @m.Synopsis
+            </td>
+            <td>
+                @m.Year
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create", "Home")
+</p>
+
+
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+<script type="text/javascript">
+
+    $(function () {
+        $('#movieTable').DataTable();
+    });
+
+</script>
